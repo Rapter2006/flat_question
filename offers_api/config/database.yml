@@ -1,0 +1,20 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: offers_api_development
+  username: shnell
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: offers_api_test
+  username: shnell
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: offers_api_production
+  username: offers_api
+  password:
