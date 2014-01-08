@@ -26,6 +26,7 @@ class CreateOffers < ActiveRecord::Migration
       t.integer    :garages_count
       t.integer    :time_to_go_to_underground
       t.string     :floor_num,                    length: 255
+      t.references :organizations,                null: false
 
       t.timestamps
     end

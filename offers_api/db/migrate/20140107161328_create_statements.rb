@@ -6,6 +6,7 @@ class CreateStatements < ActiveRecord::Migration
       t.text          :body
       t.belongs_to    :offers
       t.belongs_to    :statuses,                    null: false
+      t.belongs_to    :users
 
       t.timestamps
     end
