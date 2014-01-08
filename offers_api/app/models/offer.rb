@@ -8,6 +8,7 @@ class Offer < ActiveRecord::Base
   has_many :offer_types,  through: :offers_offer_types
 
   belongs_to :type, class_name: "Term"
+  belongs_to :subtype, class_name: "Term"
   belongs_to :city, class_name: "Term"
   belongs_to :district, class_name: "Term"
   belongs_to :layout_type, class_name: "Term"

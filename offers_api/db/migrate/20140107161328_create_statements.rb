@@ -4,9 +4,9 @@ class CreateStatements < ActiveRecord::Migration
       t.string        :sender,    length: 255,      null: false
       t.string        :contacts,  length: 255,      null: false
       t.text          :body
-      t.belongs_to    :offers
-      t.belongs_to    :statuses,                    null: false
-      t.belongs_to    :users
+      t.references    :offer
+      t.references    :status,                      null: false
+      t.references    :user
 
       t.timestamps
     end

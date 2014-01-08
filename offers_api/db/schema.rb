@@ -21,13 +21,14 @@ ActiveRecord::Schema.define(version: 20140107161525) do
     t.string   "file_data_content_type"
     t.integer  "file_data_file_size"
     t.datetime "file_data_updated_at"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "assets_offers", force: true do |t|
-    t.integer  "assets_id",  null: false
-    t.integer  "offers_id",  null: false
+    t.integer  "asset_id",   null: false
+    t.integer  "offer_id",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,20 +41,21 @@ ActiveRecord::Schema.define(version: 20140107161525) do
   end
 
   create_table "offers", force: true do |t|
-    t.integer  "types_id",                                  null: false
+    t.integer  "type_id",                                   null: false
+    t.integer  "subtype_id",                                null: false
     t.json     "location"
-    t.integer  "cities_id",                                 null: false
-    t.integer  "districts_id",                              null: false
+    t.integer  "city_id",                                   null: false
+    t.integer  "district_id",                               null: false
     t.string   "street",                                    null: false
     t.string   "home_num"
     t.string   "square",                                    null: false
-    t.integer  "layout_types_id"
+    t.integer  "layout_type_id"
     t.float    "price"
-    t.integer  "house_types_id"
+    t.integer  "house_type_id"
     t.boolean  "is_tradable",               default: false
     t.integer  "balconies_count"
     t.integer  "loggias_count"
-    t.integer  "toilet_bath_types_id"
+    t.integer  "toilet_bath_type_id"
     t.integer  "toilets_count"
     t.integer  "baths_count"
     t.integer  "cargo_lifts_count"
@@ -65,20 +67,21 @@ ActiveRecord::Schema.define(version: 20140107161525) do
     t.integer  "garages_count"
     t.integer  "time_to_go_to_underground"
     t.string   "floor_num"
+    t.integer  "organization_id",                           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "offers_offer_types", force: true do |t|
-    t.integer  "offers_id",      null: false
-    t.integer  "offer_types_id", null: false
+    t.integer  "offer_id",      null: false
+    t.integer  "offer_type_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "organizations", force: true do |t|
     t.string   "name",       null: false
-    t.integer  "assets_id"
+    t.integer  "asset_id"
     t.text     "about"
     t.json     "contacts",   null: false
     t.datetime "created_at"
@@ -86,8 +89,8 @@ ActiveRecord::Schema.define(version: 20140107161525) do
   end
 
   create_table "organizations_statements", force: true do |t|
-    t.integer  "organizations_id", null: false
-    t.integer  "statements_id",    null: false
+    t.integer  "organization_id", null: false
+    t.integer  "statement_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -100,28 +103,29 @@ ActiveRecord::Schema.define(version: 20140107161525) do
   end
 
   create_table "statements", force: true do |t|
-    t.string   "sender",      null: false
-    t.string   "contacts",    null: false
+    t.string   "sender",     null: false
+    t.string   "contacts",   null: false
     t.text     "body"
-    t.integer  "offers_id"
-    t.integer  "statuses_id", null: false
+    t.integer  "offer_id"
+    t.integer  "status_id",  null: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "terms", force: true do |t|
-    t.string   "name",            null: false
+    t.string   "name",          null: false
     t.string   "system_name"
-    t.integer  "vocabularies_id"
+    t.integer  "vocabulary_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string   "login",            null: false
-    t.string   "password",         null: false
-    t.integer  "organizations_id", null: false
-    t.integer  "roles_id",         null: false
+    t.string   "login",           null: false
+    t.string   "password",        null: false
+    t.integer  "organization_id"
+    t.integer  "role_id",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -129,6 +133,7 @@ ActiveRecord::Schema.define(version: 20140107161525) do
   create_table "vocabularies", force: true do |t|
     t.string   "name",        null: false
     t.string   "system_name", null: false
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
