@@ -21,7 +21,7 @@ describe ObjectSubtypesController do
     it "responds with subtypes of flats" do
       get :index, organizationId: Organization.first.id , typeSystemName: "flat"
       flat_type = Term.find_by system_name: "flat"
-      expect(response.body).should  == flat_type.child_vocabulary.terms.to_json(only: [:name, :system_name])
+      expect(response.body).to  eq(flat_type.child_vocabulary.terms.to_json(only: [:name, :system_name]))
     end
 
   end

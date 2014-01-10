@@ -1,5 +1,6 @@
 OffersApi::Application.routes.draw do
   get "/object_subtypes" => "object_subtypes#index"
+  get "/organizations" => "organizations#index"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

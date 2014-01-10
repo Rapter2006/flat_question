@@ -6,4 +6,10 @@ class Organization < ActiveRecord::Base
   has_many :statements, through: :organizations_statements
 
   belongs_to :asset
+
+
+  def as_json(options = {})
+    options[:only] = [:name, :contacts, :about]
+    super(options)
+  end
 end
