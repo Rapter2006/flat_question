@@ -14,7 +14,9 @@ test:
 
 production:
   adapter: postgresql
+  host: ec2-54-197-238-242.compute-1.amazonaws.com
   encoding: unicode
-  database: offers_api_production
-  username: offers_api
-  password:
+  database: dap9g5oboe1rgr
+  username: bplhiherxlhvau
+  port: 5432
+  password: F7XbNPbdlPPZj5LgKVRomsxFWV
